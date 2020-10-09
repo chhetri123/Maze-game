@@ -1,0 +1,89 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  margin: 2px 0px 0px 0px;
+  background: darkorange;
+}
+.hidden {
+  display: none !important;
+}
+h1 {
+  font-size: 50px;
+  color: brown;
+}
+.screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  height: 100px;
+  width: 300px;
+  top: 40%;
+  left: 35%;
+  background: transparent;
+  border: 3px solid red;
+  border-radius: 20px;
+  z-index: 1;
+}
+.Game-level {
+  display: flex;
+  justify-content: center;
+  font-size: 35px;
+  position: absolute;
+  color: darkred;
+  top: 25%;
+  left: 100%;
+  margin-left: 20px;
+}
+
+.restart {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  font-size: 38px;
+  color: blue;
+  top: -10%;
+  width: 150px;
+  /* margin-bottom; */
+  border: 2px solid black;
+  background: crimson;
+  border-radius: 15px;
+  letter-spacing: 2px;
+}
+.restart:hover {
+  font-size: 40px;
+  background: red;
+  cursor: pointer;
+}
+.levelPosition {
+  transform: translateY(25%);
+  text-align: center;
+  cursor: pointer;
+}
+.level {
+  font-size: 40px;
+  text-transform: uppercase;
+  width: 200px;
+  border: 2px solid black;
+  background: orange;
+  color: white;
+}
+
+.easy,
+.medium,
+.hard {
+  margin: 10px;
+  border: 2px solid black;
+  background: crimson;
+  border-radius: 15px;
+  color: aquamarine;
+}
+.easy:hover,
+.medium:hover,
+.hard:hover {
+  letter-spacing: 2px;
+  font-size: 40px;
+  cursor: pointer;
+}
