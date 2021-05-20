@@ -14,12 +14,45 @@ body {
   width: 60%;
 }
 h1 {
-  font-size: 50px;
-  color: brown;
+  text-align: center;
+  font-size: 1.8rem;
+  position: relative;
+  color: white;
+  text-transform: uppercase;
+  transform: scale(1, 1) skewX(-10deg);
+}
+h1:before {
+  position: absolute;
+  content: '';
+  top: -5px;
+  height: 50px;
+  left: 35%;
+  width: 35%;
+  z-index: -1;
+  background-image: linear-gradient(to top left, #39b385, #9be15d);
+}
+button {
+  display: none;
 }
 @media only screen and (max-width: 1100px) {
   .container {
     width: 80%;
     height: 700px;
+  }
+}
+@media only screen and (max-width: 560px) {
+  h1 {
+    display: none;
+  }
+  h1:before {
+    top: -5px;
+    display: none;
+    left: -100px;
+    width: 100%;
+  }
+  button {
+    display: block;
+    width: 100px;
+    height: 100px;
   }
 }

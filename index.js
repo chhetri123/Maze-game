@@ -2,27 +2,14 @@ const { Engine, Render, Runner, World, Bodies, Body, Events } = Matter;
 let height = 550;
 const cellHorizontal = 20;
 const cellVertical = 15;
-let unitLengthX, unitLengthY;
-// const = height / cellVertical;
 const lineThickness = 5;
 const wallWidth = 2;
-const adjustWidth = document
+const width = document
   .querySelector('.container')
   .getBoundingClientRect().width;
-console.log(adjustWidth);
-let width = adjustWidth;
-// if (adjustWidth >= 600) {
-//   width = 600;
 
-// } else if (adjustWidth > 400 || adjustWidth <= 400) {
-//   console.log(adjustWidth);
-//   width = adjustWidth - 50;
-//   height = 400;
-//   unitLengthX = width / cellHorizontal;
-//   unitLengthY = height / cellVertical;
-// }
-unitLengthX = width / cellHorizontal;
-unitLengthY = height / cellVertical;
+const unitLengthX = width / cellHorizontal;
+const unitLengthY = height / cellVertical;
 
 const engine = Engine.create();
 engine.world.gravity.y = 0;
