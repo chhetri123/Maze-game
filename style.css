@@ -52,13 +52,15 @@ h1:before {
 }
 .btn__up {
   position: absolute;
+  padding: 0 20px;
   top: 0;
-  left: 45%;
+  left: 40%;
 }
 .btn__down {
   position: absolute;
-  top: 65%;
-  left: 45%;
+  padding: 0 25px;
+  top: 70%;
+  left: 40%;
 }
 .btn__right {
   position: absolute;
@@ -71,7 +73,9 @@ h1:before {
   left: 0%;
 }
 .button {
-  margin: 0px auto;
+  /* margin: 0 auto; */
+  opacity: 0;
+  margin: -100px 0 0 300px;
   height: auto;
   width: 120px;
 }
@@ -89,5 +93,9 @@ button {
     top: -5px;
     left: 10%;
     width: 80%;
+  }
+  .button {
+    /* margin: 0 auto; */
+    opacity: 1;
   }
 }
