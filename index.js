@@ -1,22 +1,28 @@
 const { Engine, Render, Runner, World, Bodies, Body, Events } = Matter;
-const height = 500;
+let height = 550;
 const cellHorizontal = 20;
 const cellVertical = 15;
 let unitLengthX, unitLengthY;
 // const = height / cellVertical;
-const lineThickness = 3;
-const wallWidth = 10;
-const adjustHeight = document.body.getBoundingClientRect().width;
-let width;
-if (adjustHeight >= 600) {
-  width = 600;
-  unitLengthX = width / cellHorizontal;
-  unitLengthY = height / cellVertical;
-} else if (adjustHeight > 400 || adjustHeight <= 400) {
-  width = adjustHeight;
-  unitLengthX = width / cellHorizontal;
-  unitLengthY = height / cellVertical;
-}
+const lineThickness = 5;
+const wallWidth = 2;
+const adjustWidth = document
+  .querySelector('.container')
+  .getBoundingClientRect().width;
+console.log(adjustWidth);
+let width = adjustWidth;
+// if (adjustWidth >= 600) {
+//   width = 600;
+
+// } else if (adjustWidth > 400 || adjustWidth <= 400) {
+//   console.log(adjustWidth);
+//   width = adjustWidth - 50;
+//   height = 400;
+//   unitLengthX = width / cellHorizontal;
+//   unitLengthY = height / cellVertical;
+// }
+unitLengthX = width / cellHorizontal;
+unitLengthY = height / cellVertical;
 
 const engine = Engine.create();
 engine.world.gravity.y = 0;
