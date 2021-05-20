@@ -13,6 +13,9 @@ const width = document
   .querySelector('.container')
   .getBoundingClientRect().width;
 
+if (width < 600) {
+  document.querySelector('.button').style.opacity = 1;
+}
 const unitLengthX = width / cellHorizontal;
 const unitLengthY = height / cellVertical;
 
