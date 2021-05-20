@@ -1,27 +1,34 @@
 const { Engine, Render, Runner, World, Bodies, Body, Events } = Matter;
-
+const height = 500;
+const cellHorizontal = 20;
+const cellVertical = 15;
+let unitLengthX, unitLengthY;
+// const = height / cellVertical;
 const lineThickness = 3;
 const wallWidth = 10;
-
-const width = 1100;
-const height = 600;
-const cellHorizontal = 40;
-const cellVertical = 25;
-
-const unitLengthX = width / cellHorizontal;
-const unitLengthY = height / cellVertical;
+const adjustHeight = document.body.getBoundingClientRect().width;
+let width;
+if (adjustHeight >= 600) {
+  width = 600;
+  unitLengthX = width / cellHorizontal;
+  unitLengthY = height / cellVertical;
+} else if (adjustHeight > 400 || adjustHeight <= 400) {
+  width = adjustHeight;
+  unitLengthX = width / cellHorizontal;
+  unitLengthY = height / cellVertical;
+}
 
 const engine = Engine.create();
 engine.world.gravity.y = 0;
 const { world } = engine;
 const render = Render.create({
-  element: document.body,
+  element: document.querySelector('.container'),
   engine: engine,
   options: {
     wireframes: false,
     width,
     height,
-    background: "Black",
+    background: 'Black',
   },
 });
 
@@ -32,25 +39,25 @@ const walls = [
   Bodies.rectangle(width / 2, 0, width, wallWidth, {
     isStatic: true,
     render: {
-      fillStyle: "Blue",
+      fillStyle: 'Blue',
     },
   }),
   Bodies.rectangle(width / 2, height, width, wallWidth, {
     isStatic: true,
     render: {
-      fillStyle: "Blue",
+      fillStyle: 'Blue',
     },
   }),
   Bodies.rectangle(0, height / 2, wallWidth, height, {
     isStatic: true,
     render: {
-      fillStyle: "Blue",
+      fillStyle: 'Blue',
     },
   }),
   Bodies.rectangle(width, height / 2, wallWidth, height, {
     isStatic: true,
     render: {
-      fillStyle: "Blue",
+      fillStyle: 'Blue',
     },
   }),
 ];
@@ -92,10 +99,10 @@ const stepCell = (r, c) => {
   grid[r][c] = true;
   //list of the neighbors .........
   const neighbors = suffle([
-    [r - 1, c, "up"],
-    [r, c + 1, "right"],
-    [r + 1, c, "down"],
-    [r, c - 1, "left"],
+    [r - 1, c, 'up'],
+    [r, c + 1, 'right'],
+    [r + 1, c, 'down'],
+    [r, c - 1, 'left'],
   ]);
 
   for (let neighbor of neighbors) {
@@ -113,13 +120,13 @@ const stepCell = (r, c) => {
       continue;
     }
 
-    if (direction === "left") {
+    if (direction === 'left') {
       verticals[r][c - 1] = true;
-    } else if (direction === "right") {
+    } else if (direction === 'right') {
       verticals[r][c] = true;
-    } else if (direction === "up") {
+    } else if (direction === 'up') {
       horizontals[r - 1][c] = true;
-    } else if (direction === "down") {
+    } else if (direction === 'down') {
       horizontals[r][c] = true;
     }
 
@@ -140,10 +147,10 @@ horizontals.forEach((row, rowIndex) => {
       unitLengthX,
       lineThickness,
       {
-        label: "wall",
+        label: 'wall',
         isStatic: true,
         render: {
-          fillStyle: "blue",
+          fillStyle: 'blue',
         },
       }
     );
@@ -162,10 +169,10 @@ verticals.forEach((row, rowIndex) => {
       lineThickness,
       unitLengthY,
       {
-        label: "wall",
+        label: 'wall',
         isStatic: true,
         render: {
-          fillStyle: "blue",
+          fillStyle: 'blue',
         },
       }
     );
@@ -179,26 +186,27 @@ const goal = Bodies.rectangle(
   unitLengthX * 0.5,
   unitLengthY * 0.5,
   {
-    label: "goal",
+    label: 'goal',
     isStatic: true,
     render: {
-      fillStyle: "darkorange",
+      fillStyle: 'darkorange',
     },
   }
 );
 World.add(world, goal);
 
 const ballRadius = Math.min(unitLengthX, unitLengthY) / 4;
+
 const ball = Bodies.circle(unitLengthX / 2, unitLengthY / 2, ballRadius, {
-  label: "ball",
+  label: 'ball',
   render: {
-    fillStyle: "red",
+    fillStyle: 'red',
   },
 });
 
 World.add(world, ball);
 
-document.addEventListener("keydown", (event) => {
+document.addEventListener('keydown', (event) => {
   const { x, y } = ball.velocity;
   if (event.keyCode === 37) {
     Body.setVelocity(ball, { x: x - 2, y });
@@ -214,17 +222,17 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-Events.on(engine, "collisionStart", (event) => {
+Events.on(engine, 'collisionStart', (event) => {
   event.pairs.forEach((collision) => {
-    const labels = ["ball", "goal"];
+    const labels = ['ball', 'goal'];
     if (
       labels.includes(collision.bodyA.label) &&
       labels.includes(collision.bodyB.label)
     ) {
-      document.querySelector(".screen").classList.remove("hidden");
+      document.querySelector('.screen').classList.remove('hidden');
       world.gravity.y = 1;
       world.bodies.forEach((body) => {
-        if (body.label === "wall") {
+        if (body.label === 'wall') {
           Body.setStatic(body, false);
         }
       });
@@ -232,21 +240,21 @@ Events.on(engine, "collisionStart", (event) => {
   });
 });
 
-const screen = document.querySelector(".screen");
-const restart = document.querySelector(".restart");
-const easy = document.querySelector(".easy");
-const medium = document.querySelector(".medium");
-const hard = document.querySelector(".hard");
+// const screen = document.querySelector(".screen");
+// const restart = document.querySelector(".restart");
+// const easy = document.querySelector(".easy");
+// const medium = document.querySelector(".medium");
+// const hard = document.querySelector(".hard");
 
-const el = [screen, restart, easy, medium, hard];
-document.addEventListener("click", (event) => {
-  if (event.target === el[0]) {
-    reset();
-  } else if (event.target === el[1]) {
-  } else if (event.target === el[2]) {
-    World.remove(world, Bodies);
-  } else if (event.target === el[3]) {
-  } else if (event.target === el[4]) {
-  }
-  //handle click
-});
+// const el = [screen, restart, easy, medium, hard];
+// document.addEventListener("click", (event) => {
+//   if (event.target === el[0]) {
+//     reset();
+//   } else if (event.target === el[1]) {
+//   } else if (event.target === el[2]) {
+//     World.remove(world, Bodies);
+//   } else if (event.target === el[3]) {
+//   } else if (event.target === el[4]) {
+//   }
+//   //handle click
+// });
