@@ -1,3 +1,8 @@
+const up = document.querySelector('.btn__up');
+const down = document.querySelector('.btn__down');
+const right = document.querySelector('.btn__right');
+const left = document.querySelector('.btn__left');
+
 const { Engine, Render, Runner, World, Bodies, Body, Events } = Matter;
 let height = 550;
 const cellHorizontal = 20;
@@ -214,7 +219,28 @@ document.addEventListener('keydown', (event) => {
     Body.setVelocity(ball, { x, y: +2 });
   }
 });
-
+[up, down, left, right].forEach((el) =>
+  el.addEventListener('click', function (e) {
+    const { x, y } = ball.velocity;
+    if (this.dataset.value === '1') {
+      Body.setVelocity(ball, { x, y: y - 2 });
+    }
+    if (this.dataset.value === '2') {
+      console.log('down');
+      Body.setVelocity(ball, { x, y: +2 });
+    }
+    if (this.dataset.value === '3') {
+      console.log('left');
+      Body.setVelocity(ball, { x: x + 2, y });
+    }
+    if (this.dataset.value === '4') {
+      console.log('right');
+      Body.setVelocity(ball, { x: x - 2, y });
+    }
+    console.log('none');
+    return;
+  })
+);
 Events.on(engine, 'collisionStart', (event) => {
   event.pairs.forEach((collision) => {
     const labels = ['ball', 'goal'];

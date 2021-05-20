@@ -31,8 +31,40 @@ h1:before {
   z-index: -1;
   background-image: linear-gradient(to top left, #39b385, #9be15d);
 }
+.btn {
+  opacity: 1;
+  background-color: white;
+  width: 200px;
+  height: 200px;
+  position: relative;
+}
+.btn__up {
+  position: absolute;
+  top: 0;
+  left: 45%;
+}
+.btn__down {
+  position: absolute;
+  top: 65%;
+  left: 45%;
+}
+.btn__right {
+  position: absolute;
+  top: 40%;
+  right: 0;
+}
+.btn__left {
+  position: absolute;
+  top: 40%;
+  left: 0%;
+}
+.button {
+  margin: 0px auto;
+  height: auto;
+  width: 120px;
+}
 button {
-  display: none;
+  font-size: 2rem;
 }
 @media only screen and (max-width: 1100px) {
   .container {
@@ -41,18 +73,9 @@ button {
   }
 }
 @media only screen and (max-width: 560px) {
-  h1 {
-    display: none;
-  }
   h1:before {
     top: -5px;
-    display: none;
-    left: -100px;
-    width: 100%;
-  }
-  button {
-    display: block;
-    width: 100px;
-    height: 100px;
+    left: 10%;
+    width: 80%;
   }
 }
