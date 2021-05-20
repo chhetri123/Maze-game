@@ -73,7 +73,7 @@ h1:before {
   left: 0%;
 }
 .button {
-  opacity: 0;
+  opacity: 1;
   margin: -100px 0 0 300px;
   height: auto;
   width: 120px;

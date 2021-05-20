@@ -12,9 +12,8 @@ const wallWidth = 2;
 const width = document
   .querySelector('.container')
   .getBoundingClientRect().width;
-
-if (width < 600) {
-  document.querySelector('.button').style.opacity = 1;
+if (width > 800) {
+  document.querySelector('.button').style.opacity = 0;
 }
 const unitLengthX = width / cellHorizontal;
 const unitLengthY = height / cellVertical;
