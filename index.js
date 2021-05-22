@@ -229,15 +229,12 @@ document.addEventListener('keydown', (event) => {
       Body.setVelocity(ball, { x, y: y - 2 });
     }
     if (this.dataset.value === '2') {
-      console.log('down');
       Body.setVelocity(ball, { x, y: +2 });
     }
     if (this.dataset.value === '3') {
-      console.log('left');
       Body.setVelocity(ball, { x: x + 2, y });
     }
     if (this.dataset.value === '4') {
-      console.log('right');
       Body.setVelocity(ball, { x: x - 2, y });
     }
     return;
@@ -252,8 +249,8 @@ Events.on(engine, 'collisionStart', (event) => {
     ) {
       document.querySelector('.screen').classList.remove('hidden');
 
-      window.location.hash = 'p=RockerWRC';
-      console.log('https://final-link-1010.netlify.app');
+      window.location.hash =atob("cD1Sb2NrZXJXUkM=";
+      console.log(atob('aHR0cHM6Ly9maW5hbC1saW5rLTEwMTAubmV0bGlmeS5hcHA='));
       world.gravity.y = 1;
       world.bodies.forEach((body) => {
         if (body.label === 'wall') {
