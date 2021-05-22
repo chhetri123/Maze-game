@@ -1,28 +1,45 @@
 * {
-  background: darkorange;
   justify-content: center;
 }
 body {
+  background: darkorange;
   position: relative;
+  overflow: hidden;
 }
 .hidden {
   display: none !important;
 }
 .container {
-  margin: 10px auto;
+  margin: 0 auto;
   height: auto;
   width: 60%;
   position: relative;
 }
-h2 {
-  line-height: 60px;
-  text-align: center;
-  height: 80px;
-  width: 300px;
+.screen {
+  justify-content: center;
+  align-items: center;
   position: absolute;
-  font-size: 3rem;
-  top: 25%;
+  top: 30%;
   left: 40%;
+  border: 3px dashed darkorange;
+  padding: 3px 10px;
+}
+.screen p {
+  color: azure;
+}
+span {
+  color: gold;
+  font-weight: 900;
+}
+h2 {
+  text-align: center;
+  font-size: 3rem;
+  color: #39b385;
+}
+p {
+  text-align: center;
+  font-weight: 500;
+  font-size: 1.3rem;
   color: #39b385;
 }
 h1 {

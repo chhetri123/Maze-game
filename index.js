@@ -2,7 +2,6 @@ const up = document.querySelector('.btn__up');
 const down = document.querySelector('.btn__down');
 const right = document.querySelector('.btn__right');
 const left = document.querySelector('.btn__left');
-
 const { Engine, Render, Runner, World, Bodies, Body, Events } = Matter;
 let height = 550;
 const cellHorizontal = 20;
@@ -13,6 +12,7 @@ const width = document
   .querySelector('.container')
   .getBoundingClientRect().width;
 if (width > 800) {
+  height = 510;
   document.querySelector('.button').style.opacity = 0;
 }
 const unitLengthX = width / cellHorizontal;
@@ -223,6 +223,7 @@ document.addEventListener('keydown', (event) => {
 });
 [up, down, left, right].forEach((el) =>
   el.addEventListener('click', function (e) {
+    window.location.hash = '123456';
     const { x, y } = ball.velocity;
     if (this.dataset.value === '1') {
       Body.setVelocity(ball, { x, y: y - 2 });
@@ -239,7 +240,6 @@ document.addEventListener('keydown', (event) => {
       console.log('right');
       Body.setVelocity(ball, { x: x - 2, y });
     }
-    console.log('none');
     return;
   })
 );
@@ -251,6 +251,9 @@ Events.on(engine, 'collisionStart', (event) => {
       labels.includes(collision.bodyB.label)
     ) {
       document.querySelector('.screen').classList.remove('hidden');
+
+      window.location.hash = 'p=RockerWRC';
+      console.log('https://final-link-1010.netlify.app');
       world.gravity.y = 1;
       world.bodies.forEach((body) => {
         if (body.label === 'wall') {
@@ -260,22 +263,3 @@ Events.on(engine, 'collisionStart', (event) => {
     }
   });
 });
-
-// const screen = document.querySelector(".screen");
-// const restart = document.querySelector(".restart");
-// const easy = document.querySelector(".easy");
-// const medium = document.querySelector(".medium");
-// const hard = document.querySelector(".hard");
-
-// const el = [screen, restart, easy, medium, hard];
-// document.addEventListener("click", (event) => {
-//   if (event.target === el[0]) {
-//     reset();
-//   } else if (event.target === el[1]) {
-//   } else if (event.target === el[2]) {
-//     World.remove(world, Bodies);
-//   } else if (event.target === el[3]) {
-//   } else if (event.target === el[4]) {
-//   }
-//   //handle click
-// });
