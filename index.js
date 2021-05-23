@@ -248,8 +248,8 @@ Events.on(engine, 'collisionStart', (event) => {
       labels.includes(collision.bodyB.label)
     ) {
       document.querySelector('.screen').classList.remove('hidden');
-
       window.location.hash = atob('cD1Sb2NrZXJXUkM=');
+      console.log(atob('Y291cG9uIGNvZGU6LSAkZmxhZyhQQVMtODEpZmxhZyQ='));
       console.log(atob('aHR0cHM6Ly9maW5hbC1saW5rLTEwMTAubmV0bGlmeS5hcHA='));
       world.gravity.y = 1;
       world.bodies.forEach((body) => {
