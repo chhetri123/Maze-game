@@ -223,7 +223,7 @@ document.addEventListener('keydown', (event) => {
 });
 [up, down, left, right].forEach((el) =>
   el.addEventListener('click', function (e) {
-    window.location.hash = '123456';
+  
     const { x, y } = ball.velocity;
     if (this.dataset.value === '1') {
       Body.setVelocity(ball, { x, y: y - 2 });
