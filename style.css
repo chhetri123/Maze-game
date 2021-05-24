@@ -4,7 +4,6 @@
 body {
   background: darkorange;
   position: relative;
-  overflow: hidden;
 }
 .hidden {
   display: none !important;
@@ -76,7 +75,7 @@ h1:before {
 .btn__down {
   position: absolute;
   padding: 0 25px;
-  top: 70%;
+  top: 65%;
   left: 40%;
 }
 .btn__right {
@@ -90,7 +89,7 @@ h1:before {
   left: 0%;
 }
 .button {
-  opacity: 1;
+  display: block;
   margin: -100px 0 0 300px;
   height: auto;
   width: 120px;

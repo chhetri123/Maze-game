@@ -3,7 +3,7 @@ const down = document.querySelector('.btn__down');
 const right = document.querySelector('.btn__right');
 const left = document.querySelector('.btn__left');
 const { Engine, Render, Runner, World, Bodies, Body, Events } = Matter;
-let height = 550;
+let height = 520;
 const cellHorizontal = 20;
 const cellVertical = 15;
 const lineThickness = 5;
@@ -11,9 +11,10 @@ const wallWidth = 2;
 const width = document
   .querySelector('.container')
   .getBoundingClientRect().width;
-if (width > 800) {
+console.log(width);
+if (width > 700) {
   height = 510;
-  document.querySelector('.button').style.opacity = 0;
+  document.querySelector('.button').style.display = 'none';
 }
 const unitLengthX = width / cellHorizontal;
 const unitLengthY = height / cellVertical;
@@ -223,7 +224,6 @@ document.addEventListener('keydown', (event) => {
 });
 [up, down, left, right].forEach((el) =>
   el.addEventListener('click', function (e) {
-  
     const { x, y } = ball.velocity;
     if (this.dataset.value === '1') {
       Body.setVelocity(ball, { x, y: y - 2 });
