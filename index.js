@@ -11,8 +11,8 @@ const wallWidth = 2;
 const width = document
   .querySelector('.container')
   .getBoundingClientRect().width;
-console.log(width);
-if (width > 800) {
+
+if (width > 790) {
   height = 510;
   document.querySelector('.button').style.display = 'none';
 }
