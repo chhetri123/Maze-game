@@ -12,7 +12,7 @@ const width = document
   .querySelector('.container')
   .getBoundingClientRect().width;
 console.log(width);
-if (width > 700) {
+if (width > 750) {
   height = 510;
   document.querySelector('.button').style.display = 'none';
 }
